@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Boos Brothers Boards LLC</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bevan&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#e8d5b5; --surface:#f2e4c9; --ink:#3b2314; --muted:#6b4a33; --brown:#4a2c1a; --brown2:#7a4e2d;
+  --red:#a3261c; --red-ink:#fff4e6; --line:#c9ad82; --head-bg:#4a2c1a; --head-ink:#f2e4c9;
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+  --display:'Bevan','Rockwell','Georgia',serif; --body:'Source Sans 3','Segoe UI',Helvetica,Arial,sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#2a1a10; --surface:#3a2518; --ink:#f0dfc2; --muted:#c9ad82; --brown:#1f130b; --brown2:#c9955f;
+  --red:#c8392d; --red-ink:#fff4e6; --line:#5a3d28; --head-bg:#1f130b; --head-ink:#f0dfc2;}}
+:root[data-theme="dark"]{--bg:#2a1a10; --surface:#3a2518; --ink:#f0dfc2; --muted:#c9ad82; --brown:#1f130b; --brown2:#c9955f;
+  --red:#c8392d; --red-ink:#fff4e6; --line:#5a3d28; --head-bg:#1f130b; --head-ink:#f0dfc2;}
+html{scroll-behavior:smooth;scroll-padding-top:calc(72px + env(safe-area-inset-top,0px))}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.6 var(--body)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--head-bg);z-index:30}
+img{max-width:100%;display:block}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--head-bg);color:var(--head-ink);border-bottom:4px solid var(--red)}
+.bar{max-width:1180px;margin:0 auto;padding:10px 20px;display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+.logo{font:22px var(--display);color:var(--head-ink);text-decoration:none;margin-right:auto;line-height:1.1}
+nav{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+nav a,nav button{color:var(--head-ink);background:none;border:0;font:600 16px var(--body);padding:8px 12px;border-radius:6px;cursor:pointer;text-decoration:none}
+nav a:hover,nav button:hover{background:rgba(255,255,255,.12)}
+nav a.hot{background:var(--red);color:var(--red-ink)}
+nav .cartbtn{border:2px solid var(--head-ink)}
+.count{background:var(--red);color:var(--red-ink);border-radius:99px;padding:1px 8px;margin-left:6px;font-size:14px}
+:focus-visible{outline:3px solid var(--red);outline-offset:2px}
+.hero{background:linear-gradient(180deg,var(--brown2),var(--brown));color:#f6e8cf;padding:72px 20px 64px}
+.hero .in{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
+.hero h1{font:clamp(36px,6vw,64px)/1.05 var(--display);margin:0 0 18px}
+.hero p{font-size:19px;max-width:48ch;margin:0 0 26px}
+.btn{display:inline-block;background:var(--red);color:var(--red-ink);border:0;border-radius:6px;padding:12px 22px;font:700 16px var(--body);cursor:pointer;text-decoration:none}
+.btn:hover{filter:brightness(1.12)}
+.btn.ghost{background:none;border:2px solid #f6e8cf;color:#f6e8cf;margin-left:10px}
+.hero img{border-radius:10px;border:6px solid #f2e4c9;box-shadow:0 18px 40px rgba(0,0,0,.35);transform:rotate(2deg)}
+section{padding:64px 20px}
+.wrap{max-width:1180px;margin:0 auto}
+h2{font:clamp(28px,4vw,40px)/1.15 var(--display);margin:0 0 8px;color:var(--brown)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) h2{color:var(--brown2)}}
+:root[data-theme="dark"] h2{color:var(--brown2)}
+.sub{color:var(--muted);margin:0 0 32px;max-width:60ch}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:26px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:10px;overflow:hidden;display:flex;flex-direction:column}
+.card .ph{position:relative}
+.card .ph img{width:100%;aspect-ratio:4/3;object-fit:cover}
+.tag{position:absolute;top:10px;left:10px;background:var(--red);color:var(--red-ink);font-weight:700;font-size:14px;padding:3px 10px;border-radius:4px}
+.card .body{padding:16px 18px 20px;display:flex;flex-direction:column;gap:8px;flex:1}
+.card h3{margin:0;font:20px var(--display);color:var(--brown)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .card h3{color:var(--ink)}}
+:root[data-theme="dark"] .card h3{color:var(--ink)}
+.card p{margin:0;font-size:16px;color:var(--muted);flex:1}
+.row{display:flex;justify-content:space-between;align-items:center;margin-top:6px}
+.price{font:700 20px var(--body);color:var(--red)}
+.hotband{background:var(--surface);border-block:1px solid var(--line)}
+.search{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:28px}
+.search input{flex:1;min-width:220px;padding:12px 14px;font:17px var(--body);border:2px solid var(--line);border-radius:6px;background:var(--surface);color:var(--ink)}
+.empty{padding:30px;border:2px dashed var(--line);border-radius:10px;color:var(--muted)}
+.story{background:var(--brown);color:#f2e4c9}
+.story h2{color:#f2e4c9}
+.story p{max-width:62ch}
+.contact{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
+.contact div{background:var(--surface);border:1px solid var(--line);border-left:6px solid var(--red);border-radius:8px;padding:18px 20px}
+.contact b{display:block;font:18px var(--display);color:var(--brown);margin-bottom:4px}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .contact b{color:var(--brown2)}}
+:root[data-theme="dark"] .contact b{color:var(--brown2)}
+footer{background:var(--head-bg);color:var(--head-ink);text-align:center;padding:26px 20px;border-top:4px solid var(--red)}
+#drawer{position:fixed;top:0;right:0;height:100%;width:min(400px,100%);background:var(--surface);color:var(--ink);z-index:40;transform:translateX(105%);transition:transform .25s;box-shadow:-10px 0 30px rgba(0,0,0,.35);display:flex;flex-direction:column;padding:calc(18px + env(safe-area-inset-top,0px)) 20px calc(18px + env(safe-area-inset-bottom,0px))}
+#drawer.open{transform:none}
+#drawer h2{font-size:26px}
+#items{flex:1;overflow:auto;margin:10px 0}
+.line{display:flex;gap:10px;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--line)}
+.qty button{width:28px;height:28px;border-radius:50%;border:1px solid var(--line);background:var(--bg);color:var(--ink);cursor:pointer;font-size:16px}
+.total{display:flex;justify-content:space-between;font:700 20px var(--body);padding-top:10px}
+.note{font-size:14px;color:var(--muted)}
+#toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translate(-50%,40px);opacity:0;background:var(--brown);color:#f2e4c9;padding:10px 18px;border-radius:6px;transition:.25s;z-index:50;pointer-events:none}
+#toast.show{opacity:1;transform:translate(-50%,0)}
+@media (max-width:760px){.hero .in{grid-template-columns:1fr}.hero img{transform:none}.logo{width:100%}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<header>
+  <div class="bar">
+    <a class="logo" href="#top">Boos Brothers Boards</a>
+    <nav aria-label="Main">
+      <a href="#shop">Shop</a>
+      <a class="hot" href="#hot">Hot Items</a>
+      <a href="#search">Search Boards</a>
+      <a href="#contact">Contact Us</a>
+      <button class="cartbtn" id="openCart" aria-label="Open cart">Cart<span class="count" id="count">0</span></button>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <div class="in">
+      <div>
+        <h1>Boards built by hand, by the Boos family.</h1>
+        <p>Charcuterie boards and cutting boards cut, sanded, and oiled in our family workshop. Each one is made to be used every day and passed down.</p>
+        <a class="btn" href="#shop">Shop all boards</a><a class="btn ghost" href="#hot">See Hot Items</a>
+      </div>
+      <img id="heroImg" alt="Placeholder photo of a charcuterie board" width="600" height="450">
+    </div>
+  </div>
+
+  <section class="hotband" id="hot">
+    <div class="wrap">
+      <h2>Hot Items</h2>
+      <p class="sub">Seasonal boards, made in small batches while the season lasts.</p>
+      <div class="grid" id="hotGrid"></div>
+    </div>
+  </section>
+
+  <section id="shop">
+    <div class="wrap">
+      <h2>All boards</h2>
+      <p class="sub">Scroll to browse the full collection of charcuterie and cutting boards.</p>
+      <div class="grid" id="shopGrid"></div>
+    </div>
+  </section>
+
+  <section class="story" id="story">
+    <div class="wrap">
+      <h2>Made at the family workbench</h2>
+      <p>Every Boos Brothers board starts as a rough hardwood plank and ends in the hands of someone we know. We choose each piece for its grain, sand it through five grits, and finish it with food-safe mineral oil and beeswax. No two boards are the same, and each one carries a little of our shop.</p>
+    </div>
+  </section>
+
+  <section id="search">
+    <div class="wrap">
+      <h2>Search boards by name</h2>
+      <p class="sub">Type part of a board's name to filter the collection.</p>
+      <div class="search"><input id="q" type="search" placeholder="Try &ldquo;walnut&rdquo; or &ldquo;harvest&rdquo;" aria-label="Search boards by name"><button class="btn" id="clear">Clear</button></div>
+      <div class="grid" id="searchGrid"></div>
+      <div class="empty" id="none" hidden>No boards match that name. Try a shorter word, like &ldquo;oak&rdquo;.</div>
+    </div>
+  </section>
+
+  <section id="contact" class="hotband">
+    <div class="wrap">
+      <h2>Contact Us</h2>
+      <p class="sub">Questions about a board or a custom order? Reach the family.</p>
+      <div class="contact">
+        <div><b>Phone</b>(315) 555-0147</div>
+        <div><b>Email</b>hello@boosbrothersboards.example</div>
+        <div><b>Mail</b>Boos Brothers Boards LLC<br>PO Box 4821<br>Fair Haven, NY 13064</div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>&copy; 2026 Boos Brothers Boards LLC. Hand crafted by the Boos family.</footer>
+
+<aside id="drawer" aria-label="Shopping cart" aria-hidden="true">
+  <h2>Your cart</h2>
+  <div id="items"></div>
+  <div class="total"><span>Subtotal</span><span id="sub">$0.00</span></div>
+  <p class="note">Checkout is coming soon.</p>
+  <button class="btn" id="closeCart">Keep shopping</button>
+</aside>
+<div id="toast" role="status"></div>
+
+<script>
+const PRODUCTS=[
+ {id:1,name:"Black Walnut Grazing Board",price:89,hot:false,c:["#5a3622","#3a2214"],d:"Deep chocolate grain, hand sanded and oiled by the Boos family. Roomy enough for a full spread."},
+ {id:2,name:"Harvest Maple Charcuterie Tray",price:74,hot:true,c:["#d9a85f","#b97a34"],d:"Our fall favorite, with warm maple tones and a hand-carved handle. Made in small seasonal batches."},
+ {id:3,name:"End-Grain Butcher Block",price:149,hot:false,c:["#8a5a35","#5e3a20"],d:"A heavy end-grain block that is gentle on knives. Built by hand to last for decades."},
+ {id:4,name:"Holiday Cherry Serving Board",price:68,hot:true,c:["#b5562f","#7d2f18"],d:"Rich cherry wood with a ruby glow, ready for the holiday table. Each piece is signed on the back."},
+ {id:5,name:"Rustic Oak Cheese Paddle",price:42,hot:false,c:["#c9a56a","#9d7541"],d:"A small paddle with live edges and a leather loop. Great for a wedge of cheddar and a handful of nuts."},
+ {id:6,name:"Everyday Cutting Board",price:58,hot:false,c:["#c99a62","#8c5f35"],d:"Our simple workhorse for the daily chopping you do. Juice groove and non-slip feet included."},
+ {id:7,name:"Winter Spice Walnut and Maple Stripe Board",price:96,hot:true,c:["#4a2c1a","#d9a85f"],d:"Alternating walnut and maple strips cut and glued by hand. A showpiece for winter gatherings."},
+ {id:8,name:"Round Party Board with Handle",price:64,hot:false,c:["#a9743f","#6f4524"],d:"A round board for sharing, with a smooth handle and a deep oil finish. Perfect for gifting."}
+];
+const $=s=>document.querySelector(s);
+const cart={};
+function img(p,w=600,h=450){
+  const svg=`<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="${p.c[0]}"/><stop offset="1" stop-color="${p.c[1]}"/></linearGradient></defs><rect width="100%" height="100%" fill="#e8d5b5"/><rect x="${w*.1}" y="${h*.14}" width="${w*.8}" height="${h*.72}" rx="${h*.08}" fill="url(#g)"/><g stroke="#ffffff" stroke-opacity=".14" stroke-width="3" fill="none"><path d="M${w*.14} ${h*.3}C${w*.4} ${h*.2} ${w*.6} ${h*.4} ${w*.86} ${h*.28}"/><path d="M${w*.14} ${h*.5}C${w*.4} ${h*.4} ${w*.6} ${h*.6} ${w*.86} ${h*.48}"/><path d="M${w*.14} ${h*.7}C${w*.4} ${h*.6} ${w*.6} ${h*.8} ${w*.86} ${h*.68}"/></g><text x="50%" y="${h*.53}" text-anchor="middle" font-family="Georgia,serif" font-size="${h*.05}" fill="#fff4e6" fill-opacity=".85">Placeholder image</text></svg>`;
+  return "data:image/svg+xml;charset=utf-8,"+encodeURIComponent(svg);
+}
+function card(p){
+  return `<article class="card"><div class="ph"><img src="${img(p)}" alt="Placeholder photo of ${p.name}" loading="lazy" width="600" height="450">${p.hot?'<span class="tag">Hot Item</span>':''}</div><div class="body"><h3>${p.name}</h3><p>${p.d}</p><div class="row"><span class="price">$${p.price.toFixed(2)}</span><button class="btn" data-add="${p.id}">Add to cart</button></div></div></article>`;
+}
+function render(el,list){el.innerHTML=list.map(card).join("")}
+render($("#hotGrid"),PRODUCTS.filter(p=>p.hot));
+render($("#shopGrid"),PRODUCTS);
+render($("#searchGrid"),PRODUCTS);
+$("#heroImg").src=img(PRODUCTS[0],600,450);
+$("#q").addEventListener("input",e=>{
+  const t=e.target.value.trim().toLowerCase();
+  const m=PRODUCTS.filter(p=>p.name.toLowerCase().includes(t));
+  render($("#searchGrid"),m);$("#none").hidden=m.length>0;
+});
+$("#clear").onclick=()=>{$("#q").value="";$("#q").dispatchEvent(new Event("input"));$("#q").focus()};
+function drawCart(){
+  const ids=Object.keys(cart);let n=0,sum=0;
+  $("#items").innerHTML=ids.length?ids.map(id=>{const p=PRODUCTS.find(x=>x.id==id),q=cart[id];n+=q;sum+=q*p.price;
+    return `<div class="line"><span>${p.name}<br><span class="note">$${p.price.toFixed(2)}</span></span><span class="qty"><button data-dec="${id}" aria-label="Remove one">&minus;</button> ${q} <button data-inc="${id}" aria-label="Add one">+</button></span></div>`}).join(""):'<p class="note">Your cart is empty. Add a board to get started.</p>';
+  $("#count").textContent=n;$("#sub").textContent="$"+sum.toFixed(2);
+}
+function toast(m){const t=$("#toast");t.textContent=m;t.classList.add("show");clearTimeout(toast.t);toast.t=setTimeout(()=>t.classList.remove("show"),1800)}
+function setCart(open){$("#drawer").classList.toggle("open",open);$("#drawer").setAttribute("aria-hidden",!open)}
+document.addEventListener("click",e=>{
+  const b=e.target.closest("button");if(!b)return;
+  if(b.dataset.add){const id=b.dataset.add;cart[id]=(cart[id]||0)+1;drawCart();toast("Added to cart: "+PRODUCTS.find(p=>p.id==id).name)}
+  if(b.dataset.inc){cart[b.dataset.inc]++;drawCart()}
+  if(b.dataset.dec){if(--cart[b.dataset.dec]<=0)delete cart[b.dataset.dec];drawCart()}
+});
+$("#openCart").onclick=()=>setCart(true);$("#closeCart").onclick=()=>setCart(false);
+document.addEventListener("keydown",e=>{if(e.key==="Escape")setCart(false)});
+drawCart();
+</script>
+</body>
+</html>
