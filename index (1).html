@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light">
+<title>Boos Brothers Boards LLC</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  color-scheme:light;
+  --bg:#ecdcbf; --surface:#f5ead3; --band:#e2cfa9; --ink:#3b2314; --muted:#5e4330; --red:#a3261c; --red-ink:#fff4e6; --line:#c9ad82;
+  --display:'Cormorant Garamond','Palatino Linotype','Georgia',serif; --body:'Source Sans 3','Segoe UI',Helvetica,Arial,sans-serif;
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+html{scroll-behavior:smooth;scroll-padding-top:calc(80px + env(safe-area-inset-top,0px))}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.6 var(--body)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--surface);z-index:30}
+img{max-width:100%;display:block}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--surface);color:var(--ink);border-bottom:3px solid var(--red)}
+.bar{max-width:1180px;margin:0 auto;padding:10px 20px;display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+.logo{font:600 30px/1.1 var(--display);letter-spacing:.01em;color:var(--ink);text-decoration:none;margin-right:auto}
+nav{display:flex;gap:6px;flex-wrap:wrap}
+nav a{color:var(--ink);font:600 16px var(--body);padding:8px 14px;border-radius:6px;text-decoration:none}
+nav a:hover{background:var(--band)}
+:focus-visible{outline:3px solid var(--red);outline-offset:2px}
+.hero{background:var(--band);color:var(--ink);padding:72px 20px 64px;border-bottom:1px solid var(--line)}
+.hero .in{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
+.hero h1{font:600 clamp(40px,6.5vw,72px)/1.02 var(--display);margin:0 0 18px;letter-spacing:.005em}
+.hero p{font-size:19px;max-width:48ch;margin:0 0 26px}
+.btn{display:inline-block;background:var(--red);color:var(--red-ink);border:0;border-radius:6px;padding:12px 22px;font:700 16px var(--body);cursor:pointer;text-decoration:none}
+.btn:hover{filter:brightness(1.12)}
+.btn.ghost{background:none;border:2px solid var(--ink);color:var(--ink);margin-left:10px}
+.hero img{border-radius:10px;border:6px solid var(--surface);box-shadow:0 14px 30px rgba(59,35,20,.25);transform:rotate(2deg)}
+section{padding:64px 20px}
+.wrap{max-width:1180px;margin:0 auto}
+h2{font:600 clamp(32px,4.5vw,46px)/1.1 var(--display);margin:0 0 8px;color:var(--ink)}
+.sub{color:var(--muted);margin:0 0 32px;max-width:60ch}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:26px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:10px;overflow:hidden;display:flex;flex-direction:column}
+.card .ph{position:relative}
+.card .ph img{width:100%;aspect-ratio:4/3;object-fit:cover}
+.tag{position:absolute;top:10px;left:10px;background:var(--red);color:var(--red-ink);font-weight:700;font-size:14px;padding:3px 10px;border-radius:4px}
+.card .body{padding:16px 18px 20px;display:flex;flex-direction:column;gap:8px;flex:1}
+.card h3{margin:0;font:600 25px/1.15 var(--display);color:var(--ink)}
+.card p{margin:0;font-size:16px;color:var(--muted);flex:1}
+.row{display:flex;justify-content:space-between;align-items:center;margin-top:6px}
+.price{font:700 20px var(--body);color:var(--red)}
+.band{background:var(--band);border-block:1px solid var(--line)}
+.story p{max-width:62ch;font-size:19px}
+.contact{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
+.contact div{background:var(--surface);border:1px solid var(--line);border-left:6px solid var(--red);border-radius:8px;padding:18px 20px}
+.contact b{display:block;font:600 24px var(--display);color:var(--ink);margin-bottom:2px}
+footer{background:var(--surface);color:var(--ink);text-align:center;padding:26px 20px;border-top:3px solid var(--red)}
+#toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translate(-50%,40px);opacity:0;background:var(--ink);color:var(--red-ink);padding:10px 18px;border-radius:6px;transition:.25s;z-index:50;pointer-events:none}
+#toast.show{opacity:1;transform:translate(-50%,0)}
+@media (max-width:760px){.hero .in{grid-template-columns:1fr}.hero img{transform:none}.logo{width:100%}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<header>
+  <div class="bar">
+    <a class="logo" href="#top">Boos Brothers Boards</a>
+    <nav aria-label="Main">
+      <a href="#best">Best Sellers</a>
+      <a href="#catalogue">Catalogue</a>
+      <a href="#contact">Contact Us</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <div class="in">
+      <div>
+        <h1>Family-made boards, built by hand.</h1>
+        <p>Charcuterie and cutting boards cut, sanded, and oiled in our own family workshop. Each handcrafted board is made to endure every day use and be passed down for generations.</p>
+        <a class="btn" href="#catalogue">Browse the catalogue</a><a class="btn ghost" href="#best">See Best Sellers</a>
+      </div>
+      <img id="heroImg" alt="Placeholder photo of a charcuterie board" width="600" height="450">
+    </div>
+  </div>
+
+  <section class="band" id="best">
+    <div class="wrap">
+      <h2>Best Sellers</h2>
+      <p class="sub">The three boards our customers come back for most.</p>
+      <div class="grid" id="bestGrid"></div>
+    </div>
+  </section>
+
+  <section id="catalogue">
+    <div class="wrap">
+      <h2>Catalogue</h2>
+      <p class="sub">Scroll to browse every charcuterie and cutting board we make.</p>
+      <div class="grid" id="shopGrid"></div>
+    </div>
+  </section>
+
+  <section class="band story" id="story">
+    <div class="wrap">
+      <h2>Made at the family workbench</h2>
+      <p>Every Boos Brothers board starts as a rough cut hardwood plank and ends as a one-of-a-kind handcrafted cutting board. We choose each piece for its grain, sand it through five grits, and finish it with food-safe mineral oil and beeswax. No two boards are the same, and each one carries a little bit of our family owned shop with it as it’s shipped out the door.</p>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap">
+      <h2>Contact Us</h2>
+      <p class="sub">Questions about a board or a custom order? Reach the family.</p>
+      <div class="contact">
+        <div><b>Phone</b>(315) 555-0147</div>
+        <div><b>Email</b>hello@boosbrothersboards.example</div>
+        <div><b>Mail</b>Boos Brothers Boards LLC<br>PO Box 4821<br>Fair Haven, NY 13064</div>
+        <div><b>Instagram</b>@boosbrothers.boards</div>
+        <div><b>Facebook</b>@BoosBrothersBoardsNY</div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>&copy; 2026 Boos Brothers Boards LLC. Hand crafted by the Boos family.</footer>
+<div id="toast" role="status"></div>
+
+<script>
+const PRODUCTS=[
+ {id:1,name:"Black Walnut Grazing Board",price:89,best:true,c:["#5a3622","#3a2214"],d:"Deep chocolate grain, hand sanded and oiled by the Boos family. Roomy enough for a full spread."},
+ {id:2,name:"End-Grain Butcher Block",price:149,best:true,c:["#8a5a35","#5e3a20"],d:"A heavy end-grain block that is gentle on knives. Built by hand to last for decades."},
+ {id:3,name:"Everyday Cutting Board",price:58,best:true,c:["#c99a62","#8c5f35"],d:"Our simple workhorse for the daily chopping you do. Juice groove and non-slip feet included."},
+ {id:4,name:"Harvest Maple Charcuterie Tray",price:74,c:["#d9a85f","#b97a34"],d:"Warm maple tones and a hand-carved handle, made in small seasonal batches."},
+ {id:5,name:"Holiday Cherry Serving Board",price:68,c:["#b5562f","#7d2f18"],d:"Rich cherry wood with a ruby glow, ready for the holiday table. Signed on the back."},
+ {id:6,name:"Rustic Oak Cheese Paddle",price:42,c:["#c9a56a","#9d7541"],d:"A small paddle with live edges and a leather loop. Great for a wedge of cheddar and a handful of nuts."},
+ {id:7,name:"Walnut and Maple Stripe Board",price:96,c:["#4a2c1a","#d9a85f"],d:"Alternating walnut and maple strips cut and glued by hand. A showpiece for any gathering."},
+ {id:8,name:"Round Party Board with Handle",price:64,c:["#a9743f","#6f4524"],d:"A round board for sharing, with a smooth handle and a deep oil finish. Perfect for gifting."},
+ {id:9,name:"Live-Edge Acacia Plank",price:79,c:["#b98a52","#7a5128"],d:"A long plank that keeps the tree's natural edge. Every one has its own swirl of grain."},
+ {id:10,name:"Mini Appetizer Board Pair",price:46,c:["#d2a96c","#a57a45"],d:"Two small hand-finished boards for dips, olives, and nibbles. A favorite for housewarming gifts."}
+];
+const $=s=>document.querySelector(s);
+function img(p,w=600,h=450){
+  const svg=`<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="${p.c[0]}"/><stop offset="1" stop-color="${p.c[1]}"/></linearGradient></defs><rect width="100%" height="100%" fill="#ecdcbf"/><rect x="${w*.1}" y="${h*.14}" width="${w*.8}" height="${h*.72}" rx="${h*.08}" fill="url(#g)"/><g stroke="#ffffff" stroke-opacity=".14" stroke-width="3" fill="none"><path d="M${w*.14} ${h*.3}C${w*.4} ${h*.2} ${w*.6} ${h*.4} ${w*.86} ${h*.28}"/><path d="M${w*.14} ${h*.5}C${w*.4} ${h*.4} ${w*.6} ${h*.6} ${w*.86} ${h*.48}"/><path d="M${w*.14} ${h*.7}C${w*.4} ${h*.6} ${w*.6} ${h*.8} ${w*.86} ${h*.68}"/></g><text x="50%" y="${h*.53}" text-anchor="middle" font-family="Georgia,serif" font-size="${h*.05}" fill="#fff4e6" fill-opacity=".85">Placeholder image</text></svg>`;
+  return "data:image/svg+xml;charset=utf-8,"+encodeURIComponent(svg);
+}
+function card(p){
+  return `<article class="card"><div class="ph"><img src="${img(p)}" alt="Placeholder photo of ${p.name}" loading="lazy" width="600" height="450">${p.best?'<span class="tag">Best Seller</span>':''}</div><div class="body"><h3>${p.name}</h3><p>${p.d}</p><div class="row"><span class="price">$${p.price.toFixed(2)}</span><button class="btn" data-add="${p.id}">Add to cart</button></div></div></article>`;
+}
+$("#bestGrid").innerHTML=PRODUCTS.filter(p=>p.best).map(card).join("");
+$("#shopGrid").innerHTML=PRODUCTS.map(card).join("");
+$("#heroImg").src=img(PRODUCTS[0]);
+const cart={};
+function toast(m){const t=$("#toast");t.textContent=m;t.classList.add("show");clearTimeout(toast.t);toast.t=setTimeout(()=>t.classList.remove("show"),1800)}
+document.addEventListener("click",e=>{
+  const b=e.target.closest("button[data-add]");if(!b)return;
+  const id=b.dataset.add;cart[id]=(cart[id]||0)+1;
+  toast("Added to cart: "+PRODUCTS.find(p=>p.id==id).name);
+});
+</script>
+</body>
+</html>
